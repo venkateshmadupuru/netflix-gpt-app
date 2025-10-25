@@ -1,11 +1,11 @@
 import { signOut } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { LOGo, SUPPORTED_LANGUAGES } from "../utils/constants";
-import { toggleGptSearchView } from "../utils/gptSlice";
-import { changeLanguage } from "../utils/configSlice";
+import { LOGo, SUPPORTED_LANGUAGES } from "../../utils/constants";
+import { toggleGptSearchView } from "../../utils/gptSlice";
+import { changeLanguage } from "../../utils/configSlice";
 import { useState } from "react";
 const Header = () => {
   const user = useSelector((state) => state.user);
@@ -24,7 +24,7 @@ const Header = () => {
         alert("Failed to sign out. Please try again.");
       });
   };
- 
+
   const handleGptSearchView = () => {
     dispatch(toggleGptSearchView());
   };

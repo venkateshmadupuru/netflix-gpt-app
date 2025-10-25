@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./index.css";
-import Body from "./components/Body";
+import Body from "./components/MainRouter/Body";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "./utils/userslice";

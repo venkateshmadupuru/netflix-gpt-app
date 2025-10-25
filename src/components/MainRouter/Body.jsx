@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./Login";
-import Browse from "./Browse";
-import PasswordReset from "./PasswordReset";
+import Login from "@/components/Authentication/Login";
+import Browse from "../Browse/Browse";
+import PasswordReset from "../Authentication/PasswordReset";
 
 const Body = () => {
   return (

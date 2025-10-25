@@ -1,8 +1,8 @@
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useState } from "react";
-import { BANNER_IMAGE, LOGo } from "../utils/constants";
+import { BANNER_IMAGE, LOGo } from "../../utils/constants";
 import { useForm } from "react-hook-form";
-import { auth } from "../utils/firebase";
+import { auth } from "../../utils/firebase";
 import { Link } from "react-router-dom";
 
 const getFriendlyError = (code) => {
@@ -82,7 +82,9 @@ const PasswordReset = () => {
         </button>
         {message && <p className="text-green-400 my-1 ">{message}</p>}
         <Link to="/">
-          <p className="font-semibold text-white mt-4 text-lg underline">Back to Sign In</p>
+          <p className="font-semibold text-white mt-4 text-lg underline">
+            Back to Sign In
+          </p>
         </Link>
       </form>
     </div>

@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
-import Header from "./Header";
-import { checkValidData } from "../utils/Valid";
+import Header from "../Header/Header";
+import { checkValidData } from "../../utils/Valid";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { addUser } from "../utils/userslice";
+import { auth } from "../../utils/firebase";
+import { addUser } from "../../utils/userslice";
 import { useDispatch } from "react-redux";
-import { BANNER_IMAGE, DICEBEAR_AVATAR_URL } from "../utils/constants";
+import { BANNER_IMAGE, DICEBEAR_AVATAR_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
 
 const Login = () => {
