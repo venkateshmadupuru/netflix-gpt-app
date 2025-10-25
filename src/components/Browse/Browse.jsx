@@ -6,7 +6,9 @@ import usePopularMovies from "../../hooks/usePopularMovies";
 import useTopRatedMovies from "../../hooks/useTopRatedMovies";
 import useUpcomingMovies from "../../hooks/useUpcomingMovies";
 import { useSelector } from "react-redux";
-import GptSearch from "../GptSearch/GptSearch";
+import { lazy, Suspense } from "react";
+
+const GptSearch = lazy(() => import("../GptSearch/GptSearch"));
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
@@ -19,7 +21,9 @@ const Browse = () => {
     <div>
       <Header />
       {showGptSearch ? (
-        <GptSearch />
+        <Suspense fallback={<div>Loading GPT Search...</div>}>
+          <GptSearch />
+        </Suspense>
       ) : (
         <>
           <MainContainer />
