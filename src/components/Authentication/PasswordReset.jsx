@@ -55,11 +55,11 @@ const PasswordReset = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="absolute items-center bg-black/60 md:w-4/12 text-white md:mx-auto m-5 right-0 left-0 p-12 my-36 rounded-xl z-10"
+        className="absolute items-center bg-black/80 md:w-4/12 text-white md:mx-auto m-5 right-0 left-0 p-12 my-36 rounded-xl z-10"
       >
         <h2 className="font-semibold text-xl mb-3">Reset Your Password</h2>
         <input
-          className="p-3 rounded-lg w-full bg-gray-700 focus:outline focus:outline-red-500"
+          className="p-4 rounded-lg w-full bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
           type="email"
           placeholder="Enter your email"
           {...register("email", {
@@ -76,13 +76,13 @@ const PasswordReset = () => {
         <button
           type="submit"
           disabled={loading}
-          className="bg-white text-lg font-bold text-orange-500 p-3 mt-5 w-full rounded-lg cursor-pointer"
+          className="bg-white text-lg font-bold text-orange-500 p-3 mt-5 w-full rounded-lg cursor-pointer hover:bg-gray-200 transition-colors duration-300"
         >
           {loading ? "Sending..." : "Send Reset Link"}
         </button>
         {message && <p className="text-green-400 my-1 ">{message}</p>}
         <Link to="/">
-          <p className="font-semibold text-white mt-4 text-lg underline">
+          <p className="font-semibold text-white mt-4 text-lg hover:text-rose-300 cursor-pointer">
             Back to Sign In
           </p>
         </Link>

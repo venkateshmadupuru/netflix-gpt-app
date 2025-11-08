@@ -117,13 +117,13 @@ const Login = () => {
               ref={firstName}
               type="name"
               placeholder="First Name"
-              className="p-4 my-4 w-full rounded-lg bg-gray-700 focus:outline focus:outline-red-500"
+              className="p-4 my-4 w-full rounded-lg bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
             />
             <input
               ref={lastName}
               type="name"
               placeholder="Last Name"
-              className="p-4 my-4 w-full rounded-lg bg-gray-700 focus:outline focus:outline-red-500"
+              className="p-4 my-4 w-full rounded-lg bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
             />
           </>
         )}
@@ -131,13 +131,13 @@ const Login = () => {
           ref={email}
           type="email"
           placeholder="Email Address"
-          className="p-4 my-4 w-full rounded-lg bg-gray-700 focus:outline focus:outline-red-500"
+          className="p-4 my-4 w-full rounded-lg bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
         />
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className=" p-4 my-4 w-full rounded-lg bg-gray-700 focus:outline focus:outline-red-500"
+          className=" p-4 my-4 w-full rounded-lg bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
         />
         <p className="py-3 text-rose-400">{errorMessage}</p>
         <button
