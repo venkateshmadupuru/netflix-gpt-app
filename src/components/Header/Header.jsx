@@ -7,6 +7,7 @@ import { LOGo, SUPPORTED_LANGUAGES } from "../../utils/constants";
 import { toggleGptSearchView } from "../../utils/gptSlice";
 import { changeLanguage } from "../../utils/configSlice";
 import { useState } from "react";
+import { SiNetflix } from "react-icons/si";
 const Header = () => {
   const user = useSelector((state) => state.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
@@ -33,8 +34,8 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute py-2 px-8 bg-gradient-to-b from-black z-10 w-full flex flex-col md:flex-row justify-between">
-      <img className="w-44 mx-auto md:mx-0" src={LOGo} alt="logo" />
+    <div className="absolute py-2 px-8 bg-gradient-to-b from-black z-10 w-full flex items-center justify-between">
+      <SiNetflix className="text-4xl sm:text-5xl text-red-600" />
       {user && (
         <div className="flex items-center justify-between">
           {showGptSearch && (
