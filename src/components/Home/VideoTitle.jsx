@@ -1,4 +1,6 @@
 import React from "react";
+import { BiInfoCircle } from "react-icons/bi";
+import { IoPlaySharp } from "react-icons/io5";
 
 const VideoTitle = ({ title, overview }) => {
   return (
@@ -10,16 +12,16 @@ const VideoTitle = ({ title, overview }) => {
       <div className="flex gap-4 my-2">
         <button
           className="md:w-30 bg-white text-black font-semibold md:px-6 px-2 md:py-2 py-1 
-                    rounded hover:bg-gray-600 hover:scale-125 transition duration-300 shadow-md mr-2"
+                    rounded hover:brightness-90 transition duration-300 shadow-md mr-2"
         >
-          ▶️Play
+          <span className="flex items-center"><IoPlaySharp className="mr-1" />Play</span>
+          
         </button>
-
         <button
-          className="hidden md:inline-block w-30 bg-gray-700 text-white font-semibold px-4 py-2 
-                    rounded hover:bg-gray-600 hover:scale-125 transition duration-300 shadow-md"
+          className="hidden md:inline-block w-32 bg-gray-800 text-white font-semibold px-4 py-2 
+                    rounded hover:bg-gray-700 transition duration-300 shadow-md"
         >
-          More Info
+          <span className="flex items-center"><BiInfoCircle className="mr-1" />More Info</span>
         </button>
       </div>
     </div>
