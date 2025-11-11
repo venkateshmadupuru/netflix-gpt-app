@@ -3,7 +3,7 @@ import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { LOGo, SUPPORTED_LANGUAGES } from "../../utils/constants";
+import { SUPPORTED_LANGUAGES } from "../../utils/constants";
 import { toggleGptSearchView } from "../../utils/gptSlice";
 import { changeLanguage } from "../../utils/configSlice";
 import { useState } from "react";

@@ -1,6 +1,6 @@
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useState } from "react";
-import { BANNER_IMAGE, LOGo } from "../../utils/constants";
+import { BANNER_IMAGE} from "../../utils/constants";
 import { useForm } from "react-hook-form";
 import { auth } from "../../utils/firebase";
 import { Link } from "react-router-dom";
@@ -44,7 +44,6 @@ const PasswordReset = () => {
 
   return (
     <div>
-      <img className="w-44 mx-auto md:mx-0" src={LOGo} alt="logo" />
       <div className="fixed inset-0 -z-10">
         <img
           src={BANNER_IMAGE}
