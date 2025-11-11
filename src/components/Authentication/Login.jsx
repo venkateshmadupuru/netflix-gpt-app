@@ -22,7 +22,7 @@ const Login = () => {
   const firstName = useRef(null);
   const lastName = useRef(null);
 
-  const handlebuttonClick = () => {
+  const handleButtonClick = () => {
     const message = checkValidData(
       email.current.value,
       password.current.value,
@@ -33,7 +33,10 @@ const Login = () => {
     if (message) return;
 
     if (!showSignInForm) {
-      const avatarURL = `${DICEBEAR_AVATAR_URL}`;
+      const seed = encodeURIComponent(
+        firstName.current.value + lastName.current.value + email.current.value
+      );
+      const avatarURL = `${DICEBEAR_AVATAR_URL}${seed}`;
       const fullName = `${firstName.current.value} ${lastName.current.value}`;
 
       // Sign Up Logic
@@ -51,14 +54,16 @@ const Login = () => {
             displayName: fullName,
             photoURL: avatarURL,
           })
-            .then(() => {
+            .then(async () => {
               // Profile updated successfully
+              await user.reload();
+              const updatedUser = auth.currentUser;
               dispatch(
                 addUser({
-                  uid: user.uid,
-                  email: user.email,
-                  displayName: fullName,
-                  photoURL: avatarURL,
+                  uid: updatedUser.uid,
+                  email: updatedUser.email,
+                  displayName: updatedUser.displayName,
+                  photoURL: updatedUser.photoURL,
                 })
               );
             })
@@ -145,7 +150,7 @@ const Login = () => {
           className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 text-white text-lg 
                     font-semibold p-3 my-4 w-full rounded-lg cursor-pointer 
                     transform hover:scale-105 transition-transform duration-300"
-          onClick={handlebuttonClick}
+          onClick={handleButtonClick}
         >
           {showSignInForm ? "Sign In" : "Sign Up"}
         </button>
