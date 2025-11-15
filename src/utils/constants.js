@@ -12,7 +12,14 @@ export const API_OPTIONS = {
   },
 };
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
-export const BASE_API_URL = "https://api.themoviedb.org/3";
+export const TMDB_BASE_URL = "https://api.themoviedb.org/3/movie";
+export const TMDB_NOW_PLAYING = `${TMDB_BASE_URL}/now_playing?page=1`;
+export const TMDB_POPULAR = `${TMDB_BASE_URL}/popular?page=1`;
+export const TMDB_TOP_RATED = `${TMDB_BASE_URL}/top_rated?page=1`;
+export const TMDB_UPCOMING = `${TMDB_BASE_URL}/upcoming?page=1`;
+export const TMDB_MOVIE_VIDEOS = (id) =>
+  `${TMDB_BASE_URL}/${id}/videos?language=en-US`;
+
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
   { identifier: "hindi", name: "Hindi" },
