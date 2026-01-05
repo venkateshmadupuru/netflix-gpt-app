@@ -9,7 +9,7 @@ Authentication is handled using Firebase, movie data is fetched from TMDB, and A
 ## 🚀 Live Demo
 
 Note: This project is built for learning and portfolio purposes. It is a Netflix-inspired clone and not an official Netflix product.
-🔗 [text](https://netflixgpt-ec6a1.web.app/)
+🔗 https://netflixgpt-ec6a1.web.app/
 
 ---
 
@@ -118,7 +118,8 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 This project is licensed under the MIT License.
 
-This project is created for learning and portfolio purposes only.
-Netflix is a registered trademark of Netflix, Inc.
-This project is not affiliated with or endorsed by Netflix.
+- This project is created for learning and portfolio purposes only.
+- Netflix is a registered trademark of Netflix, Inc.
+- This project is not affiliated with or endorsed by Netflix.
+
 ---
