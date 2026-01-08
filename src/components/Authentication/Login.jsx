@@ -111,7 +111,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute bg-black/80 md:w-4/12 text-white p-12 md:my-36 my-19 md:mx-auto mx-10 right-0 left-0 rounded-2xl"
+        className="absolute bg-black/80 md:w-4/12 text-white p-12 my-20 m-5 md:mx-auto mx-10 right-0 left-0 rounded-2xl"
       >
         <h1 className="text-3xl font-bold my-2">
           {showSignInForm ? "Sign In" : "Sign Up"}
@@ -163,9 +163,11 @@ const Login = () => {
             : "Already a member? Sign In"}
         </span>
         <Link to="/passwordreset">
-          <p className="text-white cursor-pointer my-3 hover:underline">
-            Forgot Password
-          </p>
+          {showSignInForm && (
+            <p className="text-white cursor-pointer my-3 hover:underline">
+              Forgot Password
+            </p>
+          )}
         </Link>
       </form>
     </div>
