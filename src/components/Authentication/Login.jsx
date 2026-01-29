@@ -11,40 +11,49 @@ import { addUser } from "../../utils/userslice";
 import { useDispatch } from "react-redux";
 import { BANNER_IMAGE, DICEBEAR_AVATAR_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
+import { BiLock, BiUser } from "react-icons/bi";
+import { CiMail } from "react-icons/ci";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Login = () => {
   const [showSignInForm, setShowSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
-
+  const userName = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-  const firstName = useRef(null);
-  const lastName = useRef(null);
+  const confirmPassword = useRef(null);
 
   const handleButtonClick = () => {
+    if (
+      !showSignInForm &&
+      password.current.value !== confirmPassword.current.value
+    ) {
+      setErrorMessage("Passwords do not match");
+      return;
+    }
     const message = checkValidData(
       email.current.value,
       password.current.value,
-      firstName.current ? firstName.current.value : " ",
-      lastName.current ? lastName.current.value : " "
+      userName.current ? userName.current.value : " ",
     );
     setErrorMessage(message);
     if (message) return;
 
     if (!showSignInForm) {
       const seed = encodeURIComponent(
-        firstName.current.value + lastName.current.value + email.current.value
+        userName.current.value + email.current.value,
       );
       const avatarURL = `${DICEBEAR_AVATAR_URL}${seed}`;
-      const fullName = `${firstName.current.value} ${lastName.current.value}`;
+      const fullName = userName.current.value;
 
       // Sign Up Logic
 
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
       )
         .then((userCredential) => {
           // Signed up
@@ -64,7 +73,7 @@ const Login = () => {
                   email: updatedUser.email,
                   displayName: updatedUser.displayName,
                   photoURL: updatedUser.photoURL,
-                })
+                }),
               );
             })
             .catch((error) => {
@@ -82,7 +91,7 @@ const Login = () => {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
       )
         .then((userCredential) => {
           // Signed in
@@ -116,44 +125,74 @@ const Login = () => {
         <h1 className="text-3xl font-bold my-2">
           {showSignInForm ? "Sign In" : "Sign Up"}
         </h1>
+
         {!showSignInForm && (
-          <>
+          <div className="relative my-4">
+            <BiUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input
-              ref={firstName}
-              type="name"
-              placeholder="First Name"
-              className="p-4 my-4 w-full rounded-lg bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
+              ref={userName}
+              type="text"
+              placeholder="User Name"
+              className="p-4 pl-12 w-full rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-1 focus:ring-rose-500"
             />
-            <input
-              ref={lastName}
-              type="name"
-              placeholder="Last Name"
-              className="p-4 my-4 w-full rounded-lg bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
-            />
-          </>
+          </div>
         )}
-        <input
-          ref={email}
-          type="email"
-          placeholder="Email Address"
-          className="p-4 my-4 w-full rounded-lg bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
-        />
-        <input
-          ref={password}
-          type="password"
-          placeholder="Password"
-          className=" p-4 my-4 w-full rounded-lg bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
-        />
+
+        <div className="relative my-4">
+          <CiMail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            ref={email}
+            type="email"
+            placeholder="Email Address"
+            className="p-4 pl-12 w-full rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-1 focus:ring-rose-500"
+          />
+        </div>
+
+        <div className="relative my-4">
+          <BiLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            ref={password}
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            className="p-4 pl-12 w-full rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-1 focus:ring-rose-500"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+          >
+            {showPassword ? (
+              <FiEyeOff className="w-5 h-5" />
+            ) : (
+              <FiEye className="w-5 h-5" />
+            )}
+          </button>
+        </div>
+
+        {!showSignInForm && (
+          <div className="relative my-4">
+            <BiLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <input
+              ref={confirmPassword}
+              type="password"
+              placeholder="Confirm Password"
+              className="p-4 pl-12 w-full rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-1 focus:ring-rose-500"
+            />
+          </div>
+        )}
+
         <p className="py-3 text-rose-400">{errorMessage}</p>
+
         <button
           type="submit"
           className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 text-white text-lg 
-                    font-semibold p-3 my-4 w-full rounded-lg cursor-pointer 
-                    transform hover:scale-105 transition-transform duration-300"
+              font-semibold p-3 my-4 w-full rounded-lg cursor-pointer 
+              transform hover:scale-105 transition-transform duration-300"
           onClick={handleButtonClick}
         >
           {showSignInForm ? "Sign In" : "Sign Up"}
         </button>
+
         <span
           className="text-white cursor-pointer mb-2 hover:text-red-300"
           onClick={toggleSignInForm}
@@ -162,6 +201,7 @@ const Login = () => {
             ? "New to Netflix? Sign Up Now"
             : "Already a member? Sign In"}
         </span>
+
         <Link to="/passwordreset">
           {showSignInForm && (
             <p className="text-white cursor-pointer my-3 hover:underline">
