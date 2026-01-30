@@ -4,6 +4,7 @@ import { BANNER_IMAGE} from "../../utils/constants";
 import { useForm } from "react-hook-form";
 import { auth } from "../../utils/firebase";
 import { Link } from "react-router-dom";
+import { CiMail } from "react-icons/ci";
 
 const getFriendlyError = (code) => {
   switch (code) {
@@ -54,21 +55,25 @@ const PasswordReset = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="absolute items-center bg-black/80 md:w-4/12 text-white md:mx-auto m-5 right-0 left-0 p-12 my-36 rounded-xl z-10"
+        className="absolute items-center bg-black/80 md:w-4/12 text-white md:mx-auto m-5 right-0 left-0 p-12 my-36 rounded-xl z-10 shadow-2xl shadow-gray-600/60 transition-all duration-300 hover:shadow-3xl hover:-translate-y-1"
       >
         <h2 className="font-semibold text-xl mb-3">Reset Your Password</h2>
-        <input
-          className="p-4 rounded-lg w-full bg-gray-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
-          type="email"
-          placeholder="Enter your email"
-          {...register("email", {
-            required: "Email is required",
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Invalid email format",
-            },
-          })}
-        />
+         <div className="relative my-4">
+          <CiMail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            className="p-4 pl-12 rounded-lg w-full bg-gray-800 text-gray-50 focus:outline-none focus:ring-1 focus:ring-rose-500"
+            type="email"
+            placeholder="Enter your email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Invalid email format",
+              },
+            })}
+          />
+        </div>
+        
         {errors.email && (
           <p className="text-rose-400">{errors.email.message}</p>
         )}
