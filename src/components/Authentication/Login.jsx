@@ -23,20 +23,13 @@ const Login = () => {
   const userName = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-  const confirmPassword = useRef(null);
 
-  const handleButtonClick = () => {
-    if (
-      !showSignInForm &&
-      password.current.value !== confirmPassword.current.value
-    ) {
-      setErrorMessage("Passwords do not match");
-      return;
-    }
+  const handleButtonClick = (e) => {
+    e.preventDefault();
     const message = checkValidData(
       email.current.value,
       password.current.value,
-      userName.current ? userName.current.value : " ",
+      showSignInForm ? null : userName.current.value,
     );
     setErrorMessage(message);
     if (message) return;
@@ -107,6 +100,11 @@ const Login = () => {
 
   const toggleSignInForm = () => {
     setShowSignInForm(!showSignInForm);
+    setErrorMessage(null);
+    setShowPassword(false);
+    if (userName.current) userName.current.value = "";
+    if (email.current) email.current.value = "";
+    if (password.current) password.current.value = "";
   };
   return (
     <div>
@@ -119,7 +117,7 @@ const Login = () => {
         />
       </div>
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={handleButtonClick}
         className="absolute bg-black/80 md:w-4/12 text-white p-12 my-20 m-5 md:mx-auto mx-10 right-0 left-0 rounded-2xl"
       >
         <h1 className="text-3xl font-bold my-2">
@@ -168,19 +166,6 @@ const Login = () => {
             )}
           </button>
         </div>
-
-        {!showSignInForm && (
-          <div className="relative my-4">
-            <BiLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              ref={confirmPassword}
-              type="password"
-              placeholder="Confirm Password"
-              className="p-4 pl-12 w-full rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-1 focus:ring-rose-500"
-            />
-          </div>
-        )}
-
         <p className="py-3 text-rose-400">{errorMessage}</p>
 
         <button
