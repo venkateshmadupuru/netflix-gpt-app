@@ -1,16 +1,33 @@
-export const checkValidData = (email, password, username) => {
-    const isEmailValid =/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email);
-    const isPasswordValid =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
-    const isUserNameValid = /^[a-zA-Z\s]+$/.test(username);
+export const checkValidData = (email, password, username, isSignIn) => {
+  const isEmailValid =
+    /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email);
 
-    if (!isEmailValid) {
-        return "Please enter a valid email address.";
+  const isPasswordValid =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password);
+
+  const trimmedUsername = username?.trim();
+
+  const isUserNameValid = trimmedUsername
+    ? /^[a-zA-Z0-9_]{3,30}$/.test(trimmedUsername)
+    : false;
+
+  if (!isEmailValid) {
+    return "Please enter a valid email address.";
+  }
+
+  if (!isPasswordValid) {
+    return "Password must be at least 8 characters and include uppercase, lowercase, and a number.";
+  }
+
+  if (!isSignIn) {
+    if (!trimmedUsername) {
+      return "Username is required.";
     }
-    if (!isPasswordValid) {
-        return "Password is not Valid, it should contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.";
-    }
+
     if (!isUserNameValid) {
-        return "Username can only contain letters and spaces.";
+      return "Username must be 3-30 characters and can only contain letters, numbers, and underscores.";
     }
-    return null;
+  }
+
+  return null;
 };

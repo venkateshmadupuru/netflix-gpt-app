@@ -7,7 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../utils/firebase";
-import { addUser } from "../../utils/userslice";
+import { addUser } from "../../utils/userSlice";
 import { useDispatch } from "react-redux";
 import { BANNER_IMAGE, DICEBEAR_AVATAR_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
@@ -29,7 +29,8 @@ const Login = () => {
     const message = checkValidData(
       email.current.value,
       password.current.value,
-      showSignInForm ? null : userName.current.value,
+      userName.current.value,
+      showSignInForm
     );
     setErrorMessage(message);
     if (message) return;
@@ -93,8 +94,8 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
-        });
+      setErrorMessage(errorCode + "-" + errorMessage);
+      });
     }
   };
 
@@ -173,7 +174,6 @@ const Login = () => {
           className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 text-white text-lg 
               font-semibold p-3 my-4 w-full rounded-lg cursor-pointer 
               transform hover:scale-105 transition-transform duration-300"
-          onClick={handleButtonClick}
         >
           {showSignInForm ? "Sign In" : "Sign Up"}
         </button>
