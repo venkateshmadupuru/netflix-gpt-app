@@ -12,6 +12,7 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const currentLang = useSelector((state) => state.config.lang);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSignOut = () => {
@@ -40,6 +41,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {showGptSearch && (
             <select
+              value={currentLang}
               className="p-2 m-2 bg-gray-800 text-white rounded-lg cursor-pointer"
               onChange={handleLanguageChange}
             >
