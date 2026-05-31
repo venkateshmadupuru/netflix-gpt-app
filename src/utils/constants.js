@@ -22,13 +22,13 @@ export const TMDB_MOVIE_VIDEOS = (id) =>
 
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
-  { identifier: "hindi", name: "Hindi" },
-  { identifier: "spanish", name: "Spanish" },
-  { identifier: "french", name: "French" },
-  { identifier: "german", name: "German" },
-  { identifier: "chinese", name: "Chinese" },
-  { identifier: "japanese", name: "Japanese" },
-  { identifier: "russian", name: "Russian" },
-  { identifier: "portuguese", name: "Portuguese" },
-  { identifier: "telugu", name: "Telugu" },
+  { identifier: "hi", name: "Hindi" },
+  { identifier: "es", name: "Spanish" },
+  { identifier: "fr", name: "French" },
+  { identifier: "de", name: "German" },
+  { identifier: "zh", name: "Chinese" },
+  { identifier: "ja", name: "Japanese" },
+  { identifier: "ru", name: "Russian" },
+  { identifier: "pt", name: "Portuguese" },
+  { identifier: "te", name: "Telugu" },
 ];

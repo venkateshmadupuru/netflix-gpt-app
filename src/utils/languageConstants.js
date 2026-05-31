@@ -1,43 +1,44 @@
 const lang = {
   en: {
-    search: "search",
+    search: "Search",
     gptSearchPlaceholder: "What would you like to watch today?",
   },
-  hindi: {
+  hi: {
     search: "खोज",
     gptSearchPlaceholder: "आज आप क्या देखना चाहेंगे?",
   },
-  spanish: {
-    search: "buscar",
+  es: {
+    search: "Buscar",
     gptSearchPlaceholder: "¿Qué te gustaría ver hoy?",
   },
-  french: {
-    search: "chercher",
-    gptSearchPlaceholder: "Que voulez-vous regarder aujourd'hui?",
+  fr: {
+    search: "Chercher",
+    gptSearchPlaceholder: "Que souhaitez-vous regarder aujourd'hui ?",
   },
-  german: {
-    search: "suchen",
+  de: {
+    search: "Suchen",
     gptSearchPlaceholder: "Was möchten Sie heute sehen?",
   },
-  chinese: {
+  zh: {
     search: "搜索",
     gptSearchPlaceholder: "您今天想看什么？",
   },
-  japanese: {
+  ja: {
     search: "検索",
     gptSearchPlaceholder: "今日は何を見たいですか？",
   },
-  russian: {
-    search: "искать",
+  ru: {
+    search: "Поиск",
     gptSearchPlaceholder: "Что бы вы хотели посмотреть сегодня?",
   },
-  portuguese: {
-    search: "pesquisar",
+  pt: {
+    search: "Pesquisar",
     gptSearchPlaceholder: "O que você gostaria de assistir hoje?",
   },
-  telugu: {
+  te: {
     search: "శోధించండి",
     gptSearchPlaceholder: "ఈ రోజు మీరు ఏమి చూడాలనుకుంటున్నారు?",
   },
 };
+
 export default lang;
